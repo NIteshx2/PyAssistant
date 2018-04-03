@@ -1,3 +1,5 @@
+#A testing module. Lets you check if all your speech recognition funtions are wokrking or not.
+
 import speech_recognition as sr
 from time import ctime
 import time
