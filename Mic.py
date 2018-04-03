@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+# Mic.py : Created so that you can test that wheather you can Use Speech Recognition on your system on not.
 # NOTE: this example requires PyAudio because it uses the Microphone class
 
 import speech_recognition as sr
