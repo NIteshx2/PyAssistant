@@ -10,15 +10,20 @@ import os
 from gtts import gTTS
 import pygame
 from pygame import mixer
+from audio import record
+from jarvis_core import jarvis
+
+x = 0
+
 
 def speak(audioString):
     global x
     b = audioString
     if len(b) == 0:
-        #w1 = Label(root, text="No input!").pack()
+        # w1 = Label(root, text="No input!").pack()
         return
     tts = gTTS(text=b, lang='en-us')
-    tts.save("voice%s.mp3"%(x))
+    tts.save("voice%s.mp3" % (x))
     pygame.init()
     pygame.display.set_mode((2, 1))
     mixer.music.load("voice%s.mp3" % (x))
@@ -33,63 +38,43 @@ def speak(audioString):
         clock.tick(10)
 
 
-def recordAudio():
-    # Record Audio
-    r = sr.Recognizer()
-    with sr.Microphone() as source:
-        print("Speak...")
-        audio = r.listen(source)
-
-    # Speech recognition using Google Speech Recognition
-    data = ""
-    try:
-    # Uses the default API key
-    # To use another API key: `r.recognize_google(audio, key="GOOGLE_SPEECH_RECOGNITION_API_KEY")`
-        data = r.recognize_google(audio)
-        print("You said : " + data )
-    except sr.UnknownValueError:
-        print("Google Speech Recognition could not understand audio")
-    except sr.RequestError as e:
-        print("Could not request results from Google Speech Recognition service; {0}".format(e))
-    return data
+def welcome():
+    message = """ Hi! I'm Jarvis, you personal assistant."
+                  To improve our interactions, I just need to know your name."
+                  Could you please tell me your name? """
+    speak(message)
 
 
-def jarvis(data):
-    if "how are you" in data:
-        speak("I am fine")
-
-    elif "what time is it" in data:
-        speak(ctime())
-
-    elif "where is" in data:
-        data = data.split(" ")
-        location = data[2]
-        speak("Hold on nitesh, I will show you where " + location + " is.")
-        wb.open_new_tab("https://www.google.nl/maps/place/" + location + "/&amp;")
-    else :
-        speak(",,,,,,,I did not get what you said !")
+def get_user_name():
+    name = input("Tell Jarvis your name : ")
+    speak("Excellent " + str(name) + "! So, how can I help you? :)")
+    return name
 
 
-# initialization
+def main():
+    print("Jarvis booting...")
+    welcome()
+    name = get_user_name()
+    data = record()
+    jarvis(data, name, speak)
+    speak("Ok, I'm going for now. Bye.")
+    print("Jarvis ended.")
+
+    # initialization
 '''root = Tk()
-#a = StringVar()
+# a = StringVar()
 
 root.title("Assistant")
 root.geometry("400x120")
 x=0
 
 w = Label(root, text = "Hi, what can we do for you ?" , takefocus = True, font = " , 15").pack( side = LEFT)
-#text = Entry(textvariable = a , bd = 8 , width = 60).pack()
+# text = Entry(textvariable = a , bd = 8 , width = 60).pack()
 but2 = Button(text = "quit" , command =root.quit , activebackground = "white", bg = "red", fg = "white", height = 2, width =10).pack(side = RIGHT)
 but1 = Button(text='listen',bd = 4, command = recordAudio , height =2 , width=10, activebackground = "lightgreen").pack(side = RIGHT)
 
 root.mainloop()
 '''
-time.sleep(0.5)
-x=0
-print("start..")
-speak("Hi! Nitesh, what can I do for you?")
-data = recordAudio()
-jarvis(data)
-speak("Turning off the program.")
-print("Run complete")
+
+if __name__ == "__main__":
+    main()
