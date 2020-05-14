@@ -75,27 +75,6 @@ def jarvis(data):
 
 
 
-# initialization
-# root = Tk()
-# #a = StringVar()
-
-# root.title("Assistant")
-# root.geometry("400x120")
-# x=0
-
-# w = Label(root, text = "Hi, what can we do for you ?" , takefocus = True, font = " , 15").pack( side = LEFT)
-# #text = Entry(textvariable = a , bd = 8 , width = 60).pack()
-# but2 = Button(text = "quit" , command =root.quit , activebackground = "white", bg = "red", fg = "white", height = 2, width =10).pack(side = RIGHT)
-# but1 = Button(text='listen',bd = 4, command = recordAudio , height =2 , width=10, activebackground = "lightgreen").pack(side = RIGHT)
-
-# root.mainloop()
-
-
-
-
-
-
-# time.sleep(0.5)
 x=0
 print("Starting Program..")
 speak("Hi! Ted, what can I do for you?")
