@@ -2,6 +2,12 @@
 
 # Requires PyAudio and PySpeech.
 
+# pip install SpeechRecognition
+# pip install gTTS
+# pip install pygame
+
+# while running, The code will take some time as it relies on online services.
+
 import webbrowser as wb
 import speech_recognition as sr
 from tkinter import *
