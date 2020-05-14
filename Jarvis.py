@@ -39,9 +39,22 @@ def recordAudio():
     with sr.Microphone() as source:
         print("Speak...")
         audio = r.listen(source)
-
+        print("heard...")
     # Speech recognition using Google Speech Recognition
     data = ""
+ #    try:
+ #    # for testing purposes, we're just using the default API key
+ #    # to use another API key, use `r.recognize_google(audio, key="GOOGLE_SPEECH_RECOGNITION_API_KEY")`
+ #    # instead of `r.recognize_google(audio)`
+ #    data = r.recognize_google(audio))
+	#     print("Google Speech Recognition thinks you said " + r.recognize_google(audio))
+	# except sr.UnknownValueError:
+ #    	print("Google Speech Recognition could not understand audio")
+	# except sr.RequestError as e:
+ #    	print("Could not request results from Google Speech Recognition service; {0}".format(e))
+
+
+
     try:
     # Uses the default API key
     # To use another API key: `r.recognize_google(audio, key="GOOGLE_SPEECH_RECOGNITION_API_KEY")`
@@ -70,21 +83,29 @@ def jarvis(data):
         speak(",,,,,,,I did not get what you said !")
 
 
+
+
+
 # initialization
-'''root = Tk()
-#a = StringVar()
+# root = Tk()
+# #a = StringVar()
 
-root.title("Assistant")
-root.geometry("400x120")
-x=0
+# root.title("Assistant")
+# root.geometry("400x120")
+# x=0
 
-w = Label(root, text = "Hi, what can we do for you ?" , takefocus = True, font = " , 15").pack( side = LEFT)
-#text = Entry(textvariable = a , bd = 8 , width = 60).pack()
-but2 = Button(text = "quit" , command =root.quit , activebackground = "white", bg = "red", fg = "white", height = 2, width =10).pack(side = RIGHT)
-but1 = Button(text='listen',bd = 4, command = recordAudio , height =2 , width=10, activebackground = "lightgreen").pack(side = RIGHT)
+# w = Label(root, text = "Hi, what can we do for you ?" , takefocus = True, font = " , 15").pack( side = LEFT)
+# #text = Entry(textvariable = a , bd = 8 , width = 60).pack()
+# but2 = Button(text = "quit" , command =root.quit , activebackground = "white", bg = "red", fg = "white", height = 2, width =10).pack(side = RIGHT)
+# but1 = Button(text='listen',bd = 4, command = recordAudio , height =2 , width=10, activebackground = "lightgreen").pack(side = RIGHT)
 
-root.mainloop()
-'''
+# root.mainloop()
+
+
+
+
+
+
 time.sleep(0.5)
 x=0
 print("start..")
